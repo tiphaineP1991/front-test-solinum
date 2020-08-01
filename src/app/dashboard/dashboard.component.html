@@ -1,0 +1,104 @@
+<div class="row">
+  <h2>Modifier les structures</h2>
+  <div class="col-md">
+    <h4>Structure status : En ligne</h4>
+    <ul class="list-group" *ngFor="let structure of structures">
+      <li class="list-group-item" *ngIf="structure.status === 'online'">
+        <h4>{{ structure.name }}</h4>
+        <p>{{ structure._id }}</p>
+        <p>Email : {{ structure.email }}</p>
+        <p>Adresse : {{ structure.address }}</p>
+        <p>Type de structure : {{ structure.type }}</p>
+        <p>Statut : {{ structure.status }}</p>
+        <div>
+          <button
+            class="btn btn-primary"
+            (click)="onUpdate([structure._id])"
+            style="margin-right: 10px;"
+          >
+            Modifier
+          </button>
+        </div>
+        <div class="form-group">
+          <select
+            class="custom-select"
+            style="
+              width: 250px;
+              height: 38px;
+              border-radius: 10;
+              margin-top: 10px;
+            "
+            placeholder="{{ structure.moderation }}"
+            value="{{ structure.moderation }}"
+            (change)="editModeration($event, structure._id)"
+          >
+            <option value="incomplete">Manque d'informations</option>
+            <option value="validate">Valider</option>
+          </select>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md">
+    <h4>Structure status : Brouillon</h4>
+    <ul class="list-group" *ngFor="let structure of structures">
+      <li class="list-group-item" *ngIf="structure.status === 'draft'">
+        <h4>{{ structure.name }}</h4>
+        <p>{{ structure._id }}</p>
+        <p>Email : {{ structure.email }}</p>
+        <p>Adresse : {{ structure.address }}</p>
+        <p>Type de structure : {{ structure.type }}</p>
+        <p>Statut : {{ structure.status }}</p>
+        <div>
+          <button
+            class="btn btn-primary"
+            (click)="onUpdate([structure._id])"
+            style="margin-right: 10px;"
+          >
+            Modifier
+          </button>
+        </div>
+        <div class="form-group">
+          <select
+            class="custom-select"
+            style="
+              width: 250px;
+              height: 38px;
+              border-radius: 10;
+              margin-top: 10px;
+            "
+            placeholder="{{ structure.moderation }}"
+            value="{{ structure.moderation }}"
+            (change)="editModeration($event, structure._id)"
+          >
+            <option value="incomplete">Manque d'informations</option>
+            <option value="validate">Valider</option>
+          </select>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- <input type="text" value="{{ structure.email }}" />
+      <input type="text" value="{{ structure.address }}" />
+      <select
+        id="status"
+        class="form-control"
+        name="{{ structure.type }}"
+        value="{{ structure.type }}"
+        ngModel
+      >
+        <option value="distribution">Distribution</option>
+        <option value="douche">Douche</option>
+        <option value="wifi">Wifi</option>
+      </select>
+      <select
+        id="status"
+        class="form-control"
+        value="{{ structure.status }}"
+        ngModel
+      >
+        <option value="brouillon">Brouillon</option>
+        <option value="enligne">En ligne</option>
+      </select> -->

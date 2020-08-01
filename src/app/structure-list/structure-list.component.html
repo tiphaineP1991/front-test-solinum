@@ -1,0 +1,11 @@
+<div>
+  <h2>Toutes les structures</h2>
+  <ul class="list-group" *ngFor="let structure of structures">
+    <li class="list-group-item" *ngIf="structure.status === 'online'">
+      <h4>{{ structure.name }}</h4>
+      <p>Email : {{ structure.email }}</p>
+      <p>Adresse : {{ structure.address }}</p>
+      <p>Type : {{ structure.type }}</p>
+    </li>
+  </ul>
+</div>

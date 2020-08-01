@@ -1,0 +1,98 @@
+<div class="row">
+  <h2>Ajouter une nouvelle structure</h2>
+  <div class="col-sn-8 col-sn-offset-2">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="name">Nom de la structure</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          name="name"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          name="email"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Adresse de la structure</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          name="address"
+          value="{{ selectedAddress }}"
+          (change)="findAddress($event)"
+          autocomplete="on"
+          *ngIf="!addresses"
+          ngModel
+          required
+        />
+        <select
+          class="form-control"
+          id="addresses"
+          name="addresses"
+          (change)="editAddress($event)"
+          *ngIf="addresses"
+          ngModel
+        >
+          <option
+            *ngFor="let address of addresses"
+            value="{{ address.address.freeformAddress }}"
+          >
+            {{ address.address.freeformAddress }}</option
+          ></select
+        >
+      </div>
+      <div class="form-group">
+        <label for="type">Type de structure</label>
+        <select class="form-control" id="type" name="type" ngModel>
+          <option value="" disabled selected>Choisir votre option</option>
+          <option value="distribution">Distribution</option>
+          <option value="shower">Douche</option>
+          <option value="wifi">Wifi</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="status">Statut</label>
+        <select
+          class="custom-select"
+          id="status"
+          class="form-control"
+          name="status"
+          ngModel
+        >
+          <option value="draft" selected>Brouillon</option>
+          <option value="online">En ligne</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="moderation">Modération</label>
+        <select
+          class="custom-select"
+          id="moderation"
+          class="form-control"
+          name="moderation"
+          ngModel
+        >
+          <option value="" disabled selected>Choisir votre option</option>
+          <option value="incomplete">Manque d'informations</option>
+          <option value="validate">Validé</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
+        Enregistrer
+      </button>
+    </form>
+  </div>
+</div>

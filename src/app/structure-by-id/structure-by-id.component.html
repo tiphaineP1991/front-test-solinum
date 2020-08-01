@@ -1,0 +1,68 @@
+<h2>Modifier la structure {{ structure._id }}</h2>
+<div class="col-sn-8 col-sn-offset-2">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label for="name">Nom de la structure</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        value="{{ structure.name }}"
+        (change)="editName($event)"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        id="email"
+        class="form-control"
+        value="{{ structure.email }}"
+        (change)="editEmail($event)"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <label for="address">Adresse</label>
+      <input
+        type="text"
+        id="address"
+        class="form-control"
+        value="{{ structure.address }}"
+        (change)="editAddress($event)"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <select
+        id="type"
+        class="form-control"
+        name="{{ structure.type }}"
+        value="{{ structure.type }}"
+        (change)="editType($event)"
+        ngModel
+      >
+        <option value="distribution">Distribution</option>
+        <option value="shower">Douche</option>
+        <option value="wifi">Wifi</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <select
+        id="status"
+        class="form-control"
+        name="{{ structure.status }}"
+        value="{{ structure.status }}"
+        (change)="editStatus($event)"
+        ngModel
+      >
+        <option value="draft">Brouillon</option>
+        <option value="online">En ligne</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success" style="margin-right: 10px;">
+      Modifier
+    </button>
+  </form>
+</div>
